@@ -1,0 +1,5 @@
+ 
+
+Currency CCHSSWDeCIamd Val. for Carriage Declared Val. for Customs
+C 8
+USD P X X NVD NVD

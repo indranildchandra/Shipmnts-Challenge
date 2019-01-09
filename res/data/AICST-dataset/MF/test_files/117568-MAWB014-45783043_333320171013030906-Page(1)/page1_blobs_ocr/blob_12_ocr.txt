@@ -1,0 +1,3 @@
+Amount of [nsurance INSURANCE - If carrier offers insurance, and such insurance is requested in
+accordance with the conditions thereof, indicate amount to be insured in
+XXX figures in box marked "Amount of Insurance".
