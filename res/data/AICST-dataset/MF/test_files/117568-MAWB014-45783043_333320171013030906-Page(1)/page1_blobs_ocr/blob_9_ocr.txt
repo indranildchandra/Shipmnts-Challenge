@@ -1,2 +1,0 @@
-Airport of Departure (Addr. of First Carrier) and Requested Routing
-BOSTON

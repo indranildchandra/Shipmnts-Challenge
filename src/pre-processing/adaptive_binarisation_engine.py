@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def calcLocalStats(im, map_m, map_s, winx, winy):
+def calculate_local_stats(im, map_m, map_s, winx, winy):
     im_sum, im_sum_sq=cv2.integral2(im, cv2.CV_64F)  #diffrent parameters sdepth & sqdepth -- BEWARE
     wxh = int(np.floor(winx/2))
     wyh = int(np.floor(winy/2))
@@ -63,7 +63,7 @@ def calcLocalStats(im, map_m, map_s, winx, winy):
 
     return max_s
 
-def getBinarisedImage(im, winx, winy, k, dR):
+def get_binarised_image(im, winx, winy, k, dR):
     wxh=int(np.floor(winx/2))
     wyh=int(np.floor(winy/2))
 
@@ -77,7 +77,7 @@ def getBinarisedImage(im, winx, winy, k, dR):
     map_s = np.zeros(im.shape,dtype=np.float32)
     output = np.zeros(im.shape,dtype=np.uint8)
 
-    max_s = calcLocalStats(im, map_m, map_s, winx, winy)
+    max_s = calculate_local_stats(im, map_m, map_s, winx, winy)
     min_I, max_I, _ , _ = cv2.minMaxLoc(im)
 
     thsurf = np.zeros(im.shape, np.float32)
@@ -144,7 +144,7 @@ def getBinarisedImage(im, winx, winy, k, dR):
 
 #filepath = "2.png"
 #im = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
-#res = getBinarisedImage(im,100,100,0.5,128)
+#res = get_binarised_image(im,100,100,0.5,128)
 #print(res)
 #cv2.imshow('',res)
 #cv2.waitKey(10000)

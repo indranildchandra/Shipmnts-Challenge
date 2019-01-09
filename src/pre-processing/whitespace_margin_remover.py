@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-def getROI(image):
+def get_roi(image):
     h,w,_ = image.shape
     left_boundary = int(0.025*w)
     right_boundary = int(0.975*w)

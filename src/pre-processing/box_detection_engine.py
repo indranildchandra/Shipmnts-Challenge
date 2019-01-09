@@ -1,6 +1,8 @@
 import cv2
 import os
 import numpy as np
+from text_detection_engine import get_text_regions
+
 
 def sort_contours(cnts, method="left-to-right"):
     # initialize the reverse flag and sort index
@@ -25,9 +27,10 @@ def sort_contours(cnts, method="left-to-right"):
     # return the list of sorted contours and bounding boxes
     return (cnts, boundingBoxes)
 
-def getBoxes(img_for_box_extraction, cropped_dir_path, save_page_layout=False):
+def get_boxes(img_for_box_extraction, cropped_dir_path, save_page_layout=False):
 
-    img = cv2.imread(img_for_box_extraction, 0)  # Read the image
+    rgb_img = cv2.imread(img_for_box_extraction, 1)  # Read the image in Color
+    img = cv2.imread(img_for_box_extraction, 0)  # Read the image in Grayscale
     (thresh, img_bin) = cv2.threshold(img, 128, 255,
                                       cv2.THRESH_BINARY | cv2.THRESH_OTSU)  # Thresholding the image
     img_bin = 255-img_bin  # Invert the image
@@ -68,9 +71,9 @@ def getBoxes(img_for_box_extraction, cropped_dir_path, save_page_layout=False):
         page_name = img_for_box_extraction[img_for_box_extraction.rfind('/') + 1 : img_for_box_extraction.rfind('.jpg')]
         layout_path = os.path.join(cropped_dir_path,"./../"+page_name+"/") + page_name
         cv2.imwrite(layout_path + "_binary_image.jpg", img_bin)
-        cv2.imwrite(layout_path + "_verticle_lines.jpg",verticle_lines_img)
-        cv2.imwrite(layout_path + "_horizontal_lines.jpg",horizontal_lines_img)
-        cv2.imwrite(layout_path + "_page_layout.jpg",img_final_bin)
+        cv2.imwrite(layout_path + "_verticle_lines.jpg", verticle_lines_img)
+        cv2.imwrite(layout_path + "_horizontal_lines.jpg", horizontal_lines_img)
+        cv2.imwrite(layout_path + "_page_layout.jpg", img_final_bin)
 
     idx = 0
     for c in contours:
@@ -80,10 +83,17 @@ def getBoxes(img_for_box_extraction, cropped_dir_path, save_page_layout=False):
         # If the box height is greater then 20, width is > 80, then only save it as a box in "cropped_dir_path" folder.
         if (w > 80 and h > 20) and w > 3*h:
             idx += 1
-            new_img = img[y:y+h, x:x+w]
             clahe = cv2.createCLAHE(clipLimit=0.1, tileGridSize=(2, 2))
-            new_img = clahe.apply(new_img)
-            cv2.imwrite(cropped_dir_path + 'blob_' + str(idx) + '.png', new_img)
+            histeq_img = clahe.apply(img[y:y+h, x:x+w])
+            cv2.imwrite(cropped_dir_path + 'blob_' + str(idx) + '.jpg', histeq_img)
+
+            ## -> Accuracy not upto the mark
+            # if not os.path.exists(cropped_dir_path + '/blob_text_regions/'):
+            #     try:
+            #         os.makedirs(cropped_dir_path + '/blob_text_regions/')
+            #     except OSError as exc:
+            #         print("Can not create blob_text_regions directory!")
+            # cv2.imwrite(cropped_dir_path + '/blob_text_regions/blob_' + str(idx) + '.jpg', get_text_regions(rgb_img[y:y+h, x:x+w]))
 			
     return idx
 
@@ -94,4 +104,4 @@ def getBoxes(img_for_box_extraction, cropped_dir_path, save_page_layout=False):
 
 
 # #For testing only
-# noOfBoxes = getBoxes("./../../res/data/AICST-dataset/MF/test_files/117438-4312_327220171005155635-Page(1)/page1.jpg", "./../../res/data/AICST-dataset/MF/test_files/117438-4312_327220171005155635-Page(1)/page1_blobs/", save_page_layout=True)
+# no_of_boxes = get_boxes("./../../res/data/AICST-dataset/MF/test_files/117438-4312_327220171005155635-Page(1)/page1.jpg", "./../../res/data/AICST-dataset/MF/test_files/117438-4312_327220171005155635-Page(1)/page1_blobs/", save_page_layout=True)

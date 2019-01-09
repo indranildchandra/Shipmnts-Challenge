@@ -1,6 +1,6 @@
 import PyPDF2
 
-def getText(filename):
+def get_text(filename):
     pdfFileObj = open(filename, 'rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     num_pages = pdfReader.numPages
@@ -17,5 +17,5 @@ def getText(filename):
     return text
 
 # #For testing only
-# output = getText("C:\\Users\\Indranil Chandra\\Desktop\\Shipmnts\\Shipmnts-Challenge\\res\\data\\AICST-dataset\\MF\\test_files\\117586-[Untitled]_303520171013155622-Page(2).pdf")
+# output = get_text("./../../res/data/AICST-dataset/MF/test_files/117586-[Untitled]_303520171013155622-Page(2).pdf")
 # print(output)
