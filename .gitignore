@@ -1,0 +1,7 @@
+# Directories to be excluded
+src/ocr-engine/.ipynb_checkpoints/
+src/pre-processing/.ipynb_checkpoints/
+src/ocr-engine/__pycache__/
+src/pre-processing/__pycache__/
+
+# Files to be excluded

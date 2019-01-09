@@ -1,0 +1,3 @@
+Amount 0' Insurance INSURANCE - If carrier offers insurance, and such insurance is
+M 7 : requested in accordance with the conditions thereof, indicate
+‘ ‘ i “ amount to be insured in figures in box marked "Amount of lnsurance‘ﬂ
