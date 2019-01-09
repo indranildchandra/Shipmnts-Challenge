@@ -1,12 +1,8 @@
 # Shipmnts-Challenge
 Challenge is to predict the Shipper and Consignee Code masked in the file identify_codes.json
 
-==============================================================================================
-https://github.com/indranildchandra/Shipmnts-Challenge/blob/master/res/Problem%20Statement.pdf 
-==============================================================================================
 
 ## Overview:
-
 Each trade happening involves multiple players known as “Agents”. Shipper sends goods via air or ocean to a Consignee, by buying space from Airline or Shipping line. The agent who orchestrates this procurement of freight is called the Forwarder. Each party has its own Forwarder (referred as the Local Agent) and the opposite Forwarder (referred as the Overseas Agent).
 
 Airlines have authorised Forwarders to issue proof of carriage, by issuing documents known as Air Waybill (AWB). This document carries name of all the stakeholders. Further, there are two such documents: one is called Master Air Waybill or MAWB and the other is known by House Air Waybill or HAWB. Two mandatory fields in this document are: “Shipper Name & Address” and “Consignee Name & Address”. HAWB carries the actual names of the parties in the corresponding fields. While MAWB carries the respective Forwarder’s name in each of the two fields.
@@ -14,7 +10,6 @@ There’s another document called the Air Cargo Manifest or ACM, which contains 
 
 
 ## Data:
-
 You are provided with 4 files:
 1. oag_codes.json : ids of all Shipper’s Forwarders
 2. identify_codes.json : is a list of masters with
@@ -34,3 +29,6 @@ The task is to predict the Shipper and Consignee Code masked in the file identif
 * OTH-H and PS-M are beyond the scope of this Challenge.
 ** Multiple tuples in House represent the scenario of Consolidation (CONSOL) where 1 or more Shippers could be shipping goods to 1 or more Consignees.
 *** This is just a fraction of the data. You may not find all pdf files mentioned in document_labels.json
+
+
+https://github.com/indranildchandra/Shipmnts-Challenge/blob/master/res/Problem%20Statement.pdf 
