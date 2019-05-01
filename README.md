@@ -12,7 +12,7 @@ There’s another document called the Air Cargo Manifest or ACM, which contains 
 
 
 ### Data:
-You are provided with 4 files:
+4 files are provided by Shipmnts:
 1. oag_codes.json : ids of all Shipper’s Forwarders
 2. identify_codes.json : is a list of masters with
 	* ID - primary key
@@ -31,6 +31,3 @@ The task is to predict the Shipper and Consignee Code masked in the file identif
 * OTH-H and PS-M are beyond the scope of this Challenge.
 * Multiple tuples in House represent the scenario of Consolidation (CONSOL) where 1 or more Shippers could be shipping goods to 1 or more Consignees.
 * This is just a fraction of the data. You may not find all pdf files mentioned in document_labels.json
-
-
-https://github.com/indranildchandra/Shipmnts-Challenge/blob/master/res/Problem%20Statement.pdf 
