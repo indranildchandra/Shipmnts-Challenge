@@ -11,9 +11,9 @@ PyPDF2==1.26.0
 pdftabextract==0.3.0
 pandas==0.19.2
 numpy==1.15.4
-jupyter==1.0.0
-jupyter-client==5.0.0
-jupyter-console==5.1.0
-jupyter-core==4.3.0
-tensorflow==1.6.0
-keras==2.1.2
+jupyter
+jupyter-client
+jupyter-console
+jupyter-core
+tensorflow
+keras
